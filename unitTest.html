@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css">
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+    <script src="js/controller.js"></script>
+    <script>
+        // model 
+        let model;
+
+        // dummy view
+        function updateView() { }
+
+        QUnit.test('add person', function (assert) {
+            // arrange
+            model = {
+                people: [
+                    { name: 'Per', age: 17 },
+                ],
+                inputs: {
+                    name: 'Terje',
+                    age: 46,
+                }
+            };
+
+            // act
+            addPerson();
+
+            // assert
+            assert.equal(model.people.length, 2);
+            const person = model.people[1];
+            assert.equal(person.name,'Terje');
+            assert.equal(person.age,46);
+        });
+
+    </script>
+</body>
